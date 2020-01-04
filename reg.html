@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用户注册</title>
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/reg.css" />
+    <link rel="stylesheet" href="../lib/bootstrap-3.3.7-dist/css/bootstrap.css" />
+    <script src="../js/reg.js"></script>
+</head>
+<body>
+    <div id="reg">
+            <div id="top">
+            <div class="container">
+                <div class="top-l fl">
+                    <h1>baiyang</h1>
+                </div>
+                <div class="top-r fr">
+                    我已经注册，现在就<a href="login.html"> 登录</a>
+                </div>
+            </div>
+        </div>
+        <div id="main"><!-- main -->
+            <div class="container">
+                <div class="reg-main"><!-- reg-main -->
+                    <div class="reg-main-l fl"><!-- reg-main-l -->
+                        <p>手机注册</p>
+                        <div class="sj">
+                            <div class="sj1"></div>
+                        </div>
+
+                    <div class="form">
+                        <div class="tell username">
+                        <label for="username"></label>
+                            手机号：<input type="text" name="username" id="username" placeholder="请输入用户名" />
+                            <span class="u-ts ts"><i class="glyphicon glyphicon-info-sign"></i>请输入正确的手机号</span>
+                        </div><!-- username -->
+                         <div class="tell password">
+                         <label for="password"></label>
+                            密码：<input type="password" name="password" id="password" placeholder="请输入6-20位密码" />
+                            <!-- <span class="p-ts ts"><i class="glyphicon glyphicon-info-sign"></i></span> -->
+                        </div><!--password-->
+                        <div class="tell code">
+                            <label for="code"></label>
+                            验证码：<input type="text" name="code" id="code" placeholder="请输入验证码" /><i class="glyphicon glyphicon-remove-circle fault"></i><i class="glyphicon glyphicon-ok-sign right"></i><span href="#Showcode" id="udcode"><span id="Showcode"></span><span class="huan">看不清,换一张</span></span>
+                        </div><!-- code -->
+                        <div class="next" id="register">
+                            <a href="login.html"><input type="text" value="注册"/></a>
+                        </div>
+                        </div><!-- form -->
+                    </div>
+                    <div class="reg-main-r fr">
+                        <p>注册之后您可以</p>
+                        <ul>
+                            <li><img src="../img/zc1.png"/><span>购买商品支付订单</span></li>
+                            <li><img src="../img/zc2.png"/><span>收藏商品关注店铺</span></li>
+                            <li><img src="../img/zc3.png"/><span>安全交易诚信无忧</span></li>
+                            <li><img src="../img/zc4.png"/><span>积分获取优惠购物</span></li>
+                            <li><img src="../img/zc5.png"/><span>会员等级享受特权</span></li>
+                            <li><img src="../img/zc6.png"/><span>评价晒单站外分享</span></li>
+                        </ul>
+                    </div>
+                </div><!-- reg-main -->
+            </div><!-- container -->
+        </div><!-- main -->
+        <!-- end -->
+                <div id="end">
+                <div class="container">
+                    <div class="end1">
+                        <a href="#"  class="end11">首页</a>
+                        <a href="#">联系我们</a>
+                    </div>
+                    <p class="end2">版权所有 © 2007-2018 青岛百洋健康药房连锁有限公司 百洋健康 鲁ICP备09091598号</p>
+                </div>
+                </div><!-- end -->
+    </div>
+</body>
+</html>

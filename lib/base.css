@@ -1,0 +1,63 @@
+/*base.css的作用：
+（1）清除默认样式
+（2）添加公共样式
+（3）书写页面公共部分的代码
+
+*/
+
+/*(1)清除默认样式*/
+html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img,input{ margin:0; padding:0; }
+fieldset, img,input{ border:0 none; outline-style:none; }   /*去掉input等聚焦时的蓝色边框*/
+ul,li,ol{ list-style:none; }
+select, input { vertical-align:middle;}
+textarea { resize:none; } /*防止拖动*/
+img {border:0; vertical-align:middle; }  
+/*  去掉图片低测默认的3像素空白缝隙，或者用display：block也可以*/
+table { border-collapse:collapse; }
+a {text-decoration:none; }
+h1,h2,h3,h4,h5,h6 {font-weight:normal;font-size:1em;}  /*设置h标签的大小，设置跟父亲一样大的字体font-size:100%;*/
+i,em{font-style:normal;text-decoration:none;}
+
+
+/*2.添加公共样式*/
+body {
+    font:12px Arial,Verdana,"\5b8b\4f53";
+    color:#666;
+    background:#fff;
+}
+/*公共类*/
+.container {  /*内容、版心 提取 */
+    width: 1230px;
+    margin:0 auto;
+}
+.fl {
+    float:left;
+}
+.fr {
+    float:right;
+}
+.ac {
+    text-align:center;
+}
+.hide {
+    display:none;
+}
+.f12{ font-size: 12px;}
+.f14{ font-size: 14px;}
+.f16{ font-size: 16px;}
+
+ @font-face {font-family: "lemon";
+          src: url('../iconfont/iconfont.eot?t=1475997645'); /* IE9*/
+          src: url('../iconfont/iconfont.eot?t=1475997645#iefix') format('embedded-opentype'), /* IE6-IE8 */
+          url('../iconfont/iconfont.woff?t=1475997645') format('woff'), /* chrome, firefox */
+          url('../iconfont/iconfont.ttf?t=1475997645') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+          url('../iconfont/iconfont.svg?t=1475997645#iconfont') format('svg'); /* iOS 4.1- */
+        }
+        .iconfont {
+          font-family:"lemon" !important;
+          font-style:normal;
+          font-size:100px;
+        }
+        .fangzi:before { content: "\e667"; }
+        .xiaoche:before { content: "\e668"; }
+        .shuaige:before { content: "\e66a"; }

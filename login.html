@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>用户登录</title>
+
+    <link rel="stylesheet" href="lib/base.css" />
+    <link rel="stylesheet" href="css/login.css" />
+    <link rel="stylesheet" href="lib/bootstrap.css" />
+</head>
+<body>
+    <!-- login -->
+    <div id="login">
+        <div id="top">
+            <div class="container">
+                <div class="top-l fl">
+                    <h1>baiyang</h1>
+                </div>
+                <div class="top-r fr">
+                    <span><img src="../img/05755058785008341.jpg" style="width:43px; height:43px;"alt="" /></span>
+                    <span>
+                    您好，欢迎来到百洋健康<br>
+                    已注册的会员请登陆，或立即<a href="reg.html">注册新会员</a>
+                    </span>
+                </div>
+            </div>
+        </div><!-- top -->
+        <div id="main">
+                <div class="dl-main">
+                <div class="container">
+                    <div class="main-img fl"></div>
+                    <div class="main-dl fr">
+                    <div class="fs">
+                        <p>用户登录</p>
+                        <p>手机动态码登录</p>
+                        <div class="sj">
+                            <div class="sj1"></div>
+                        </div>
+                        </div>
+                    <div class="form">
+                        <div class="tell usernames">
+                        <label for="username"></label>
+                            帐号：<input type="text" name="username" id="username" placeholder="可使用已注册的用户名或手机号登录" />
+                        </div><!-- username -->
+                         <div class="tell passwords">
+                         <label for="password"></label>
+                            密码：<input type="password" name="password" id="password" placeholder="6-20个大小写英文字母、符号或数字" />
+                            <!-- <span class="p-ts ts"><i class="glyphicon glyphicon-info-sign"></i></span> -->
+                        </div><!--password-->
+                        <div class="ts"></div>
+                        <div class="tell codes">
+                            <label for="code"></label>
+                            验证码：<input type="text" name="code" id="code" placeholder="请输入验证码" /><i class="glyphicon glyphicon-remove-circle fault"></i><i class="glyphicon glyphicon-ok-sign right"></i><span href="#Showcode" id="udcode"><span id="Showcode"></span><span class="huan">看不清,换一张</span></span>
+                        </div><!-- code -->
+                        <div class="check tell">
+                            <input type="checkbox" id="auto" />七天自动登陆<span><a href="https://www.baiyangwang.com/member/index.php?act=login&op=forget_password">忘记密码？</a></span>
+                        </div><!-- check -->
+                        <div class="lg tell">
+                            <a href="" class="go"><input type="text" value="登录"/></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="x"></div>
+        </div>
+
+        <!-- end -->
+                <div id="end">
+                <div class="container">
+                    <div class="end1">
+                        <a href="#"  class="end11">首页</a>
+                        <a href="#">联系我们</a>
+                    </div>
+                    <p class="end2">版权所有 © 2007-2018 青岛百洋健康药房连锁有限公司 百洋健康 鲁ICP备09091598号</p>
+                </div>
+                </div><!-- end -->
+    </div><!-- main -->
+
+
+</div><!-- login -->
+</body>
+</html>
