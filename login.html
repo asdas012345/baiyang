@@ -9,18 +9,17 @@
 
     <link rel="stylesheet" href="lib/base.css" />
     <link rel="stylesheet" href="css/login.css" />
-    <link rel="stylesheet" href="lib/bootstrap.css" />
-</head>
+    <link rel="stylesheet" href="lib/bootstrap-3.3.7-dist/css/bootstrap.css" />
 <body>
     <!-- login -->
     <div id="login">
         <div id="top">
             <div class="container">
                 <div class="top-l fl">
-                    <h1>baiyang</h1>
+                    <img src="img/logo.png">
                 </div>
                 <div class="top-r fr">
-                    <span><img src="../img/05755058785008341.jpg" style="width:43px; height:43px;"alt="" /></span>
+                    <span><img src="img/05755058785008341.jpg" style="width:43px; height:43px;"alt="" /></span>
                     <span>
                     您好，欢迎来到百洋健康<br>
                     已注册的会员请登陆，或立即<a href="reg.html">注册新会员</a>
@@ -43,11 +42,11 @@
                     <div class="form">
                         <div class="tell usernames">
                         <label for="username"></label>
-                            帐号：<input type="text" name="username" id="username" placeholder="可使用已注册的用户名或手机号登录" />
+                            帐号：<input type="text" name="username" id="user" placeholder="可使用已注册的用户名或手机号登录" />
                         </div><!-- username -->
                          <div class="tell passwords">
                          <label for="password"></label>
-                            密码：<input type="password" name="password" id="password" placeholder="6-20个大小写英文字母、符号或数字" />
+                            密码：<input type="password" name="password" id="pass" placeholder="6-20个大小写英文字母、符号或数字" />
                             <!-- <span class="p-ts ts"><i class="glyphicon glyphicon-info-sign"></i></span> -->
                         </div><!--password-->
                         <div class="ts"></div>
@@ -59,7 +58,7 @@
                             <input type="checkbox" id="auto" />七天自动登陆<span><a href="https://www.baiyangwang.com/member/index.php?act=login&op=forget_password">忘记密码？</a></span>
                         </div><!-- check -->
                         <div class="lg tell">
-                            <a href="" class="go"><input type="text" value="登录"/></a>
+                            <input type="button" id="btn" value="登录"/><span class="tishi"></span>
                         </div>
                     </div>
                 </div>
@@ -82,4 +81,71 @@
 
 </div><!-- login -->
 </body>
+<script>
+ class Login{
+        constructor(){
+            this.user = document.getElementById("user");
+            this.pass = document.getElementById("pass");
+            this.btn = document.getElementById("btn");
+            this.span = document.querySelector(".tishi");
+
+            this.url = "http://localhost:83/api";
+
+            this.addEvent();
+        }
+        addEvent(){
+            var that = this;
+            this.btn.onclick = function(){
+                that.u = that.user.value;
+                that.p = that.pass.value;
+                that.load();
+            }
+        }
+        load(){
+            ajaxGet(this.url,res=>{
+                // console.log(res);
+                this.res = JSON.parse(res);
+                this.display();
+            },{
+                user:this.u,
+                pass:this.p,
+                type:"login"
+            })
+        }
+        display(){
+            if(this.res.code == 0){
+                this.span.innerHTML = "你的用户名还没有注册，去<a href='reg.html'>注册</a>吧";
+            }else if(this.res.code == 1){
+                this.span.innerHTML = "登录成功，3秒后跳转到<a href='index.html'>首页</a>";
+                setTimeout(() => {
+                    location.href = "index.html";
+                }, 3000);
+            }else{
+                this.span.innerHTML = "密码不对，重新输入密码";
+                this.pass.value = "";
+            }
+        }
+    }
+
+    new Login();
+
+    function ajaxGet(url,cb,data){
+        data = data || {};
+        var str = "";
+        for(var i in data){
+            str += `${i}=${data[i]}&`;
+        }
+        var d = new Date();
+        url = url + "?" + str + "__qft="+d.getTime();
+        
+        var xhr = new XMLHttpRequest();
+        xhr.open("get",url,true);
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4 && xhr.status == 200){
+                cb(xhr.responseText)
+            }
+        }
+        xhr.send();
+    }
+    </script>
 </html>

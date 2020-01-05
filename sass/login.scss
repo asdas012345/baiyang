@@ -4,10 +4,9 @@
     .container{width: 1030px;}
     #top{
         width: 100%;
-        .top-l h1{
+        .top-l img{
                 width: 220px;
                 height: 60px;
-                background: url(../img/logo.png) no-repeat;
                 text-indent:-10000px;
                 margin-top:20px;
             }//top-l
@@ -74,6 +73,7 @@
                     .sj{
                         position:relative;
                         width: 210px;
+                        background:#EF3C79;
                         border:2px solid #EF3C79;
                         // margin:0 auto;
                 }
@@ -84,7 +84,7 @@
                         top:2px;
                         left:50%;
                         border:8px solid transparent;
-                        border-top-color:#f00;
+                        border-top-color:#EF3C79;
                 }
                 }
                
@@ -134,6 +134,7 @@
                             opacity:0.8;
                             font-size:12px;
                             color:#ccc;
+                            display: none;
                             // display:none;
                         }
                         &:hover .huan{

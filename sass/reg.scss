@@ -1,0 +1,182 @@
+#reg{
+    width: 100%;
+    min-width:1030px;
+    .container
+        {
+        width: 1030px;
+          }
+    #top{
+        width: 100%;
+           .top-l h1{
+                width: 220px;
+                height: 60px;
+                text-indent:-10000px;
+                margin-top:20px;
+            }
+            .top-r{
+                margin-top:60px;
+                font-size:16px;
+                a{color:#EF3CA2;text-decoration:none;}
+            }
+    }
+    #main{
+        width: 100%;
+        height: 680px;
+        background:url(../img/register_bg.png)repeat;
+        overflow:hidden;
+        .reg-main{
+            width: 860px;
+            height: 560px;
+            border:12px solid #D5D5D5;
+            background:#fff;
+            margin: 60px auto;
+            .reg-main-l{
+                width: 620px;
+                p{
+                    height: 60px;
+                    line-height: 60px;
+                    color:#EF3CA2;
+                    border-bottom:1px solid #ccc;
+                    text-align:center;
+                    font-size:18px;
+                    margin-left:10px;
+                    margin-bottom:0;
+                }
+                .sj{
+                    position:relative;
+                    width: 293px;
+                    background: #EF3C79;
+                    border:2px solid #EF3C79;
+                    margin:0 auto;
+                }
+                .sj1{
+                    position:absolute;
+                    width:0;
+                    height:0;
+                    top:2px;
+                    left:50%;
+                    border:8px solid transparent;
+                    border-top-color:#f00;
+                }
+                .form{
+                    width: 400px;
+                    margin-top:48px;
+                    margin-left:120px;
+                    .tell{
+                        position:relative;
+                        width: 400px;
+                        height: 55px;
+                        border:1px solid #ccc;
+                        line-height: 50px;
+                        .ts{
+                            position:absolute;
+                            top:5px;
+                            left:300px;
+                            display:block;
+                            width: 200px;
+                            height: 40px;
+                            line-height: 40px;
+                            text-align:center;
+                            border:1px solid #ddd;
+                            background:pink;
+                            display:none;
+                            i{color:#f00;}
+                        }
+                    }
+                    .success{border:1px solid #58bc58;}
+                    .error{border:1px solid #f00;}
+                    .code{
+                        position:relative;
+                        #udcode{
+                        position:absolute;
+                        width: 120px;
+                        height: 55px;
+                        display:block;
+                        background:#f00;
+                        right:0;
+                        top:-2px;
+                        text-decoration:none;
+                        color:#fff;
+                        text-align:center;
+                        line-height: 55px;
+                        font-size:20px;
+                        .huan{
+                            position:absolute;
+                            top:0;
+                            border:1px solid #ccc;
+                            width: 120px;
+                            height: 55px;
+                            display:block;
+                            opacity:0.8;
+                            font-size:18px;
+                            color:#ccc;
+                            display:none;
+                        }
+                        &:hover .huan{
+                            display:block;
+                        }
+                    }
+                    .fault{position:absolute;left:250px;color:#f00;line-height: 50px;display:none;}
+                    .right{position:absolute;left:250px;color:#58bc58;line-height: 50px;display:none;}
+                    }//code
+                    .next input{
+                        width: 400px;
+                        height: 55px;
+                        text-align:center;
+                        background:#EF3C79;
+                        color:#fff;
+                        font-size:18px;
+                        font-weight:bold;
+                        margin-top:15px;
+                    }
+                    
+                    }//form
+            }//reg-main-l
+            .reg-main-r{
+                height: 500px;
+                width: 200px;
+                    border-left:1px solid #ccc;
+                    margin:10px 0;
+                    p{
+                        margin-top:30px;
+                        font-size:14px;
+                        margin-left:20px;
+                    }
+                    ul{
+                        margin-top:20px;
+                        margin-left:30px;
+                        li{
+                            height: 35px;
+                            line-height: 35px;
+                            span{color:#ccc;margin-left:7px;}
+                        }
+                    }
+                }//reg-main-r
+        }//reg-main
+    }//main
+            #end{
+                padding-top:88px;
+                width: 100%;
+                height: 160px;
+                background:#FAFAFA;
+                .end1{
+                text-align:center;
+                
+                a{
+                    display:inline-block;
+                    padding:0 10px;
+                    height: 16px;
+                    line-height: 16px;
+                    font-size:12px;
+                    color:#000;
+                    text-decoration:none;
+                }
+                .end11{
+                    border-right:2px solid #666;}
+            }
+            .end2{
+                text-align:center;
+                height: 40px;
+                line-height: 40px;}
+            }
+}//reg
