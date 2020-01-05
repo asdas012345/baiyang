@@ -3,15 +3,25 @@
 <head>
     <meta charset="UTF-8" />
     <title>百洋健康-百洋健康 专业健康咨询电商平台</title>
+    <style>
+        .main-list{width:1200px;overflow: hidden;margin: 10px auto;}
+        .main-list .box{width:300px;float: left;box-sizing: border-box;text-align: center;}
+        .box img{width:300px;}
+        .box p{margin: 6px 0;line-height: 20px;height:40px;overflow: hidden;}
+        .box span{display: block;margin: 6px 0;}
+        </style>
     
     <link rel="stylesheet" href="lib/base.css" />
     <link rel="stylesheet" href="lib/public.css" />
     <link rel="stylesheet" href="lib/bootstrap-3.3.7-dist/css/bootstrap.css" />
     <link rel="stylesheet" href="css/index.css" />
+
    
 </head>
 <script src="js/jquery-1.12.4.js"></script>
 <script src="js/jquery.banner.1.0.js"></script>
+<script src="js/ajax.js"></script>
+<script src="js/cookie.js"></script>
 <body>
     <div id="baiyang">
             <div id="top">
@@ -195,13 +205,12 @@
 
 
 
-            <!-- banner -->
+            <!-- banner 轮播图-->
     
                 <div id="banner" class="banner1 box " role="listbox">
                    
                 </div>
                 
-           
             <!-- main -->
             <div id="main">
                 <div class="container">
@@ -639,6 +648,120 @@
         moveTime:500,           //可选，默认为200 图片的移动时间
         index:0                 //可选，默认为0
     });
-    </script>
+
+    class List{
+        constructor(){
+            
+            this.cont = document.querySelector(".main-list");
+            this.url = "http://localhost:83/goods.json";
+
+            this.load();
+            this.addEvent()
+        }
+        addEvent(){
+            var that = this;
+            //渲染完，利用事件委托
+            this.cont.addEventListener("click",function(eve){
+                //点击加入购物车
+                if(eve.target.id == "btn"){
+                    //获取商品身上的index，goodsId
+                    that.id = eve.target.parentNode.getAttribute("index");//按钮的父元素div获取goodsid
+                    //存入cookie中
+                    that.setCookie();
+                }
+            })
+        }
+        //
+        load(){
+            var that = this;
+            ajaxGet(this.url,function(res){
+                that.res = JSON.parse(res);
+                that.display();
+            })
+        }
+        //
+        display(){
+            // console.log(this.res)
+            var str = "";
+            for(var i=0;i<this.res.length;i++){
+                str += `<div class="box" index="${this.res[i].goodsId}">
+                            <img src="${this.res[i].img}" alt="">
+                            <p>${this.res[i].name}</p>
+                            <span>${this.res[i].price}</span>
+                            <input type="button" value="加入购物车" id="btn">
+                        </div>`;
+            }
+            this.cont.innerHTML = str;
+        }
+        setCookie(){
+            // console.log(this.id)
+            // [{id:13213,num:2},{},{}]
+            // 存cookie
+            // 怎么存？区分存之前的状态
+            // console.log(getCookie("goodsMsg"))
+
+            //字符转成数组
+            this.goods = getCookie("goodsMsg") ? JSON.parse(getCookie("goodsMsg")) : [];
+            // 怎么判断是不是第一次
+            if(this.goods.length < 1){
+                // 第一次点击商品
+                this.goods.push({ //在这个数组里放入点击商品的id和其数量为1
+                    id:this.id,
+                    num:1
+                })
+            }else{
+                //如果不是第一次点击，还要判断哪些是之前有的，哪些之前没有的
+                var i = 0;
+                //this.good是数组，里面是对象，对象.id，对象.num
+                var onoff = this.goods.some((val,idx)=>{
+                    i = idx;
+                    //val是遍历时的数组，idx是对象的索引
+                    return val.id == this.id; //如果点击的商品是已经存在的商品,返回true
+                })
+
+                // arr.some(fn[, thisArg]) 
+                // 参数 fn是用来测试每个元素的函数，接受三个参数：
+                //  item：数组中正在处理的元素。
+                //  index：数组中正在处理的元素的索引值。
+                // array：some()被调用的数组。
+                // thisArg:
+                // 执行 callback 时使用的 this 值。
+               //some 为数组中的每一个元素执行一次 callback 函数，直到找到一个使得 callback 返回一个“真值”（即可转换为布尔值 true 的值）。如果找到了这样一个值，some 将会立即返回 true。
+
+             
+                if(!onoff){ //某个商品第一次点击
+                    this.goods.push({
+                        id:this.id,
+                        num:1
+                    })
+                }else{  //某个商品不是第一次点击
+                    this.goods[i].num++;
+                }
+
+                // var onoff = 0;
+                // // 不是第一次点击商品
+                // for(var i=0;i<this.goods.length;i++){
+                //     // 点击的是之前存在的
+                //     if(this.goods[i].id === this.id){
+                //         this.goods[i].num++;
+                //         onoff = 1;
+                //     }
+                // }
+                // // 点击的是之前没有的
+                // if(onoff == 0){
+                //     this.goods.push({
+                //         id:this.id,
+                //         num:1
+                //     })
+                // }
+            }
+            setCookie("goodsMsg",JSON.stringify(this.goods));
+        }
+    }
+
+    new List();
+
+
+</script>
 
 </html>
