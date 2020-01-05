@@ -51,7 +51,7 @@
             }
             .main-dl{
                 width: 480px;
-                height: 410px;
+                height: 550px;
                 border:1px solid #ccc;
                 border-radius:5px;
                 background:#fff;
@@ -92,6 +92,27 @@
                     width: 350px;
                     margin-top:30px;
                     margin:0 auto;
+                    #user{
+                        width:270px;
+
+                    }
+                    #pass{
+                        width:270px;
+                    }
+                    .red{
+                        color:red;
+                        display:block;
+                        height: 40px;
+                        width:400px;
+                        line-height: 40px;
+                    }
+                    .green{
+                        color:green;
+                        display:block;
+                        height: 40px;
+                        width:400px;
+                        line-height: 40px;
+                    }
                     .tell{
                         position:relative;
                         width: 350px;
@@ -164,12 +185,8 @@
                         }
                         
                     }
-                    .usernames input{
-                        width: 290px;
-                    }
-                    .passwords input{
-                        width: 290px;
-                    }
+                
+
             }
         }
     }

@@ -98,11 +98,14 @@ function fsHandle(req,res){
   console.log(path)
     fs.readFile(path,(err,data)=>{//读取文件
         if(err){
-            // fs.readFile(".src/err/404.html",(err.data)=>{}) //如果没请求到请求404文件
-            res.write("404");
+            fs.readFile("./404.html",(err,data)=>{
+                res.write(data)
+                res.end();
+            }) //如果没请求到请求404文件
         }else{
             res.write(data)
+            res.end();
         }
-        res.end();
+        
     })
 }

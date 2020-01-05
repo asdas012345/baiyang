@@ -44,22 +44,27 @@
                         <label for="username"></label>
                             帐号：<input type="text" name="username" id="user" placeholder="可使用已注册的用户名或手机号登录" />
                         </div><!-- username -->
+                        <span class="red"></span>
                          <div class="tell passwords">
                          <label for="password"></label>
                             密码：<input type="password" name="password" id="pass" placeholder="6-20个大小写英文字母、符号或数字" />
                             <!-- <span class="p-ts ts"><i class="glyphicon glyphicon-info-sign"></i></span> -->
                         </div><!--password-->
+                        <span class="red"></span>
                         <div class="ts"></div>
                         <div class="tell codes">
                             <label for="code"></label>
-                            验证码：<input type="text" name="code" id="code" placeholder="请输入验证码" /><i class="glyphicon glyphicon-remove-circle fault"></i><i class="glyphicon glyphicon-ok-sign right"></i><span href="#Showcode" id="udcode"><span id="Showcode"></span><span class="huan">看不清,换一张</span></span>
+                            验证码：<input type="text" name="code" id="code" placeholder="请输入验证码" /><span href="#Showcode" id="udcode"><span id="Showcode"></span><span class="huan">看不清,换一张
                         </div><!-- code -->
+                        <span class="red"></span>
+                    
                         <div class="check tell">
                             <input type="checkbox" id="auto" />七天自动登陆<span><a href="https://www.baiyangwang.com/member/index.php?act=login&op=forget_password">忘记密码？</a></span>
                         </div><!-- check -->
                         <div class="lg tell">
-                            <input type="button" id="btn" value="登录"/><span class="tishi"></span>
+                            <input type="button" id="btn" value="登录"/>
                         </div>
+                        <span class="green"></span>
                     </div>
                 </div>
             </div>
@@ -88,10 +93,19 @@
             this.pass = document.getElementById("pass");
             this.btn = document.getElementById("btn");
             this.span = document.querySelector(".tishi");
+            this.huan=document.querySelector(".huan");
+            this.code=document.getElementById("code");
+            this.Showcode=document.getElementById("Showcode");
+            this.usernames=document.querySelector(".usernames");
+            this.passwords=document.querySelector(".passwords");
+            this.codes=document.querySelector(".codes")
+
+
 
             this.url = "http://localhost:83/api";
 
             this.addEvent();
+            this.createCode();
         }
         addEvent(){
             var that = this;
@@ -100,6 +114,88 @@
                 that.p = that.pass.value;
                 that.load();
             }
+            this.huan.onclick=function(){
+                that.createCode();
+
+            }
+            this.user.onblur=function(){
+                that.u = that.user.value;
+                if(that.u===''){
+                that.user.parentNode.nextElementSibling.innerHTML = "用户名不能为空";
+                that.usernames.className="error tell usernames";
+                return false;
+              
+            }else{
+                    if(!/^1[3-9]\d{9}$/.test(that.u)){
+                    that.user.parentNode.nextElementSibling.innerHTML = "请输入正确的手机号";
+                    that.usernames.className="error tell usernames";
+                    return false;
+                    }else{
+                    that.user.parentNode.nextElementSibling.innerHTML = "";
+                    that.usernames.className="success tell usernames";
+                    return true;
+                    }
+            }
+            }
+
+            this.pass.onblur = function(){
+                that.p = that.pass.value;
+                if(that.p===''){
+                    that.pass.parentNode.nextElementSibling.innerHTML = "密码不能为空";
+                    that.passwords.className="error tell passwords";
+                    return false;
+                }
+                else{
+                    if(!/^\S{6,20}$/.test(that.p)){
+                    that.pass.parentNode.nextElementSibling.innerHTML = "密码必须是6~20位";
+                    that.passwords.className="error tell passwords";
+                   
+                    return false;
+                }else{
+                    that.pass.parentNode.nextElementSibling.innerHTML = "";
+                    that.passwords.className="success tell passwords";
+                    return true;
+                }
+                }
+            
+            }
+            this.code.onblur = function(){
+                that.c = that.code.value;
+                that.sc=that.Showcode.innerHTML
+             
+                if(that.c === ''){
+
+                    that.code.parentNode.nextElementSibling.innerHTML = "验证码不能为空";
+                    that.codes.className="error tell codes";
+
+                return false;
+                }else{
+                    if(that.c!=that.sc){
+                        that.code.parentNode.nextElementSibling.innerHTML = "验证码输入错误";
+                        that.codes.className="error tell codes";
+
+                    return false;
+                }else{
+                    that.code.parentNode.nextElementSibling.innerHTML = "";
+                    that.codes.className="success tell codes";
+                    return true;
+                } 
+                }
+                }
+        }
+
+        //随机验证码
+        createCode(){
+            let code = "";  
+            let random = new Array(0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R',  
+            'S','T','U','V','W','X','Y','Z');//随机数  
+            for(var i = 0; i < 4; i++) 
+            {//循环操作  
+                let index = Math.floor(Math.random()*36);//取得随机数的索引（0~35）  
+                code += random[index];//根据索引取得随机数加到code上  
+            }
+            this.Showcode.innerHTML=code;
+            this.Showcode.style.color=randomColorRGB();
         }
         load(){
             ajaxGet(this.url,res=>{
@@ -113,22 +209,44 @@
             })
         }
         display(){
+
+            var u=this.user.onblur();
+            var p=this.pass.onblur();
+            var c=this.code.onblur();
+
+            if(u===true&&p===true&&c===true){
+       
             if(this.res.code == 0){
-                this.span.innerHTML = "你的用户名还没有注册，去<a href='reg.html'>注册</a>吧";
+                this.user.parentNode.nextElementSibling.innerHTML = "你的用户名还没有注册，去<a href='reg.html'>注册</a>吧";
+                this.usernames.className="error tell usernames";
+                this.user.value="";
+                this.user.focus();
             }else if(this.res.code == 1){
-                this.span.innerHTML = "登录成功，3秒后跳转到<a href='index.html'>首页</a>";
+                this.usernames.className="success tell usernames";
+                this.usernames.className="success tell usernames";
+                this.codes.className="success tell codes";
+                this.btn.parentNode.nextElementSibling.innerHTML = "登录成功，3秒后跳转到<a href='index.html'>首页</a>";
                 setTimeout(() => {
                     location.href = "index.html";
                 }, 3000);
-            }else{
-                this.span.innerHTML = "密码不对，重新输入密码";
+
+    
+             }else{
+                this.passwords.className="error tell passwords";
+                this.pass.parentNode.nextElementSibling.innerHTML = "密码不对，重新输入密码";
                 this.pass.value = "";
-            }
+                this.pass.focus();
+            
+             }
+          
+           
         }
     }
+}
 
     new Login();
 
+    //ajax的get方法
     function ajaxGet(url,cb,data){
         data = data || {};
         var str = "";
@@ -147,5 +265,16 @@
         }
         xhr.send();
     }
+    //随机颜色
+    function randomColorRGB()
+    {
+    return "rgb("+random(0,255)+","+random(0,255)+","+random(0,255)+")";
+    }
+    //随机数
+    function random(a,b){
+    return Math.round(Math.random()*(a-b)+b);
+}
+
+
     </script>
 </html>

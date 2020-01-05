@@ -62,29 +62,27 @@
                     width: 400px;
                     margin-top:48px;
                     margin-left:120px;
+                    .red{
+                        color:red;
+                        display:block;
+                        height: 40px;
+                        width:400px;
+                        line-height: 40px;
+                    }
+                    .green{
+                        color:green;
+                        display:block;
+                        height: 40px;
+                        width:400px;
+                        line-height: 40px;
+                    }
                     .tell{
                         position:relative;
                         width: 400px;
                         height: 55px;
                         border:1px solid #ccc;
-                        line-height: 50px;
-                        .ts{
-                            position:absolute;
-                            top:5px;
-                            left:300px;
-                            display:block;
-                            width: 200px;
-                            height: 40px;
-                            line-height: 40px;
-                            text-align:center;
-                            border:1px solid #ddd;
-                            background:pink;
-                            display:none;
-                            i{color:#f00;}
-                        }
+                        line-height: 50px;                      
                     }
-                    .success{border:1px solid #58bc58;}
-                    .error{border:1px solid #f00;}
                     .code{
                         position:relative;
                         #udcode{
