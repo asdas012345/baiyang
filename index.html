@@ -4,11 +4,14 @@
     <meta charset="UTF-8" />
     <title>百洋健康-百洋健康 专业健康咨询电商平台</title>
     <style>
-        .main-list{width:1200px;overflow: hidden;margin: 10px auto;}
-        .main-list .box{width:300px;float: left;box-sizing: border-box;text-align: center;}
-        .box img{width:300px;}
-        .box p{margin: 6px 0;line-height: 20px;height:40px;overflow: hidden;}
-        .box span{display: block;margin: 6px 0;}
+        .main-list1{width:1250px;overflow: hidden;margin: 10px auto;}
+        .main-list1 .box{width:232px;float: left;box-sizing: border-box;text-align: center;margin-right: 10px;padding-top: 50px;}
+        .main-list1 .box img{width:160px;height: 160px;}
+        .main-list1 .box p{margin: 40px 0 5px 0;line-height: 20px;height:20px;overflow: hidden;font-size: 18px;font-weight: 600;color: #333;}
+        .main-list1 .box span{display: block;font-size: 18px;line-height: 20px;color: #ef3c79;}
+        .main-list1 .box #btn{color:#fff;width:232px;height:50px;line-height: 50px;background: #EF3C79;margin-top: 50px;}
+        .main-list1 .box input:hover p{margin-top: 0;}
+
         </style>
     
     <link rel="stylesheet" href="lib/base.css" />
@@ -226,16 +229,13 @@
                 <div class="rx"><span>热销榜单</span><span>千万妈妈　精选超值好货</span></div>
 
                 <div id="carousel-example-generic" class="carousel slide bybanner" data-ride="carousel">
-            <!-- 下标显示 -->
-                <ol class="carousel-indicators carousel-list yd">
-                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                </ol>
+    
+            
                 <!-- 图片动画部分（幻灯片效果） -->
                 <div class="carousel-inner banner" role="listbox">
                     <div class="item active goodslist">
                         <ul class="main-list1 mains">
+
                            <!-- 这里是一个描述 -->
                         </ul>
                         <div class="carousel-caption">
@@ -652,8 +652,10 @@
     class List{
         constructor(){
             
-            this.cont = document.querySelector(".main-list");
+            this.cont = document.querySelector(".main-list1");
+            
             this.url = "http://localhost:83/goods.json";
+            this.detailUrl="http://localhost:83/";
 
             this.load();
             this.addEvent()
@@ -692,6 +694,9 @@
                         </div>`;
             }
             this.cont.innerHTML = str;
+            
+           
+
         }
         setCookie(){
             // console.log(this.id)
